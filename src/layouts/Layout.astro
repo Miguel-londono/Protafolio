@@ -1,0 +1,95 @@
+---
+import maleta from "../assets/img/maleta.png";
+
+
+//sidebar
+import profile from "../../public/Profile.png";
+import github from "../assets/svg/Github.svg";
+import Linkdin from "../assets/svg/Linkedin.svg";
+import X from "../assets/svg/X.svg";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Protafolio | Miguel Londoño</title>
+  </head>
+  <body class="bg-slate-50 dark:bg-gray-900 dark:text-slate-50">
+    <header class="sticky top-0 z-10 dark:bg-gray-950 sm:ml-64">
+      <section class="max-w-5xl mx-auto">
+        <div class="p-4 absolute right-0">
+          <button
+            id="mobile-open-button"
+            class="text-3xl sm:hidden focus:outline-none"
+            >&#9776
+          </button>
+        </div>
+        <div
+          class="p-4 flex flex-col-reverse justify-center sm:flex-row px-6 items-center gap-4 sm:gap-8"
+        >
+          <div>
+            <h1 class="text-xl sm:text-3xl font-bold">
+              Hey, Soy Miguel londoño
+            </h1>
+            <h2 class="text-sm sm:text-base">
+              Desarrollador Web full stack en formacion, Especialociado en crear
+              aplicaciones y soluciones unicas.
+            </h2>
+          </div>
+          <img
+            src={maleta.src}
+            alt="maleta"
+            class="w-24 h-24 sm:w-36 sm:h-36 p-3"
+          />
+        </div>
+      </section>
+    </header>
+    <aside
+      class="hidden sm:flex sm:flex-col fixed top-0 left-0 h-screen w-64 dark:bg-gray-950 z-10"
+    >
+      <div class="flex flex-col flex-grow items-center gap-10 pt-11">
+        <h1 class="text-3xl font-bold">Protafolio</h1>
+        <a href="/" target="_blank" rel="noopener noreferrer">
+          <div class="transition ease-in-out hover:scale-[103%] block m-auto">
+            <img
+              src={profile.src}
+              alt="img-profile"
+              class="rounded-full h-32 w-32"
+            />
+          </div>
+        </a>
+        <div>
+			<ul>
+				<li>
+					<img src="" alt="">
+					Home
+				</li>
+			</ul>
+		</div>
+      </div>
+      <div class="flex justify-center p-10 gap-6">
+        <img
+          src={github.src}
+          alt="gitHub"
+          class="w-8 h-8 dark:invert transition ease-in-out hover:scale-[104%] hover:opacity-90 cursor-pointer"
+        />
+        <img
+          src={Linkdin.src}
+          alt="gitHub"
+          class="w-8 h-8 dark:invert transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer"
+        />
+        <img
+          src={X.src}
+          alt="gitHub"
+          class="w-8 h-8 dark:invert transition ease-in-out hover:scale-[104%] hover:opacity-90 cursor-pointer"
+        />
+      </div>
+    </aside>
+    <h1></h1>
+    <slot />
+  </body>
+</html>
