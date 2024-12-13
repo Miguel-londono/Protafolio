@@ -7,6 +7,9 @@ import profile from "../../public/Profile.png";
 import github from "../assets/svg/Github.svg";
 import Linkdin from "../assets/svg/Linkedin.svg";
 import X from "../assets/svg/X.svg";
+import home from "../assets/svg/Home.svg";
+import projects from "../assets/svg/Projects.svg";
+import expirience from "../assets/svg/Expirience.svg";
 ---
 
 <!doctype html>
@@ -64,9 +67,29 @@ import X from "../assets/svg/X.svg";
         </a>
         <div>
 			<ul>
-				<li>
-					<img src="" alt="">
-					Home
+				<li class=" flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44">
+					<img
+					src={home.src}
+					alt="gitHub"
+					class="w-6 h-6 dark:invert"
+				  />
+					Inicio
+				</li>
+				<li class=" flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44">
+					<img
+					src={projects.src}
+					alt="gitHub"
+					class="w-6 h-6 dark:invert"
+				  />
+					Inicio
+				</li>
+				<li class=" flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44">
+					<img
+					src={expirience.src}
+					alt="gitHub"
+					class="w-6 h-6 dark:invert"
+				  />
+					Experiencia
 				</li>
 			</ul>
 		</div>
