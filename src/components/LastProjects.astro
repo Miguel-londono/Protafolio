@@ -1,0 +1,60 @@
+---
+import profile from "../../public/Profile.png";
+
+import { getCollection } from "astro:content";
+import WindowProject from "./WindowProject.astro";
+
+const projects = await getCollection('projects'); // Asegúrate de usar el mismo nombre definido en el esquema
+
+---
+
+
+
+<!-- Window Projects-->
+<section
+        id="hero"
+        class="fade-in scrollbar-hide sm:h-[calc(100vh-10rem)] max-w-5xl mx-auto flex flex-col p-4 gap-6"
+      >
+        <div class="text-3xl w-full font-bold mb-2">
+          My last projects {"</>"}
+        </div>
+        {
+            projects.slice(0,3).map((project) => {
+                const {data, slug} = project
+                return (<WindowProject key={slug} {...data}/>)
+            }
+        )
+        }
+      </section>
+
+      <!-- Segunda sección -->
+      <section
+        id="experience"
+        class="fade-in h-[calc(100vh-10rem)] max-w-5xl mx-auto flex items-center justify-center"
+      >
+        <div>
+          <h1 class="text-4xl font-bold">Experiencia</h1>
+          <p class="text-lg">Contenido adicional</p>
+        </div>
+      </section>
+
+      <!-- Tercera sección -->
+      <section
+        id="technologies"
+        class="fade-in h-[calc(100vh-10rem)] max-w-5xl mx-auto flex items-center justify-center"
+      >
+        <div>
+          <h1 class="text-4xl font-bold">Tecnologias Manejadas</h1>
+          <p class="text-lg">Contenido adicional</p>
+        </div>
+      </section>
+      <!-- Cuarta sección -->
+      <section
+        id="projects"
+        class="fade-in h-[calc(100vh-10rem)] max-w-5xl mx-auto flex items-center justify-center"
+      >
+        <div>
+          <h1 class="text-4xl font-bold">Protectos</h1>
+          <p class="text-lg">Contenido adicional</p>
+        </div>
+      </section>
