@@ -1,8 +1,8 @@
 ---
 import maleta from "../assets/img/maleta.png";
-
+import { ClientRouter } from 'astro:transitions';
 import "../styles/global.css";
-
+import { ClientRouter } from 'astro:transitions';
 //sidebar
 import profile from "../../public/Profile.png";
 import github from "../assets/svg/Github.svg";
@@ -21,6 +21,7 @@ import expirience from "../assets/svg/Expirience.svg";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>Protafolio | Miguel Londoño</title>
+    <ClientRouter/>
   </head>
   <body class="bg-slate-50 dark:bg-gray-900 dark:text-slate-50">
     <header id="header" class="sticky top-0 z-10 dark:bg-gray-950 sm:ml-64">
@@ -30,6 +31,7 @@ import expirience from "../assets/svg/Expirience.svg";
             id="mobile-open-button"
             class="text-3xl sm:hidden focus:outline-none"
             >&#9776
+
           </button>
         </div>
         <div
@@ -141,98 +143,101 @@ import expirience from "../assets/svg/Expirience.svg";
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll("section");
     const observerOptions = { threshold: 0.1 };
+    let observer;
 
-    // Agrega la clase inicial y configura el observer
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-        } else {
-          entry.target.classList.remove("show");
-        }
+    // Función para inicializar IntersectionObserver
+    function initObserver() {
+      const sections = document.querySelectorAll("section");
+
+      // Desconectar el observer anterior si existe
+      if (observer) observer.disconnect();
+
+      observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          } else {
+            entry.target.classList.remove("show");
+          }
+        });
+      }, observerOptions);
+
+      // Observar todas las secciones
+      sections.forEach((section) => {
+        section.classList.add("fade-in");
+        observer.observe(section);
       });
-    }, observerOptions);
-
-    sections.forEach((section) => {
-      section.classList.add("fade-in");
-      observer.observe(section);
-    });
-  });
-
-  document.addEventListener("DOMContentLoaded", () => {
-    // Configuración de animaciones para las secciones al hacer scroll
-    const sections = document.querySelectorAll("section");
-    const observerOptions = { threshold: 0.1 };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-        } else {
-          entry.target.classList.remove("show");
-        }
-      });
-    }, observerOptions);
-
-    sections.forEach((section) => {
-      section.classList.add("fade-in");
-      observer.observe(section);
-    });
-
-    // Configuración del botón "Inicio" para hacer scroll a la sección Hero
-    const btnInicio = document.getElementById("btnInicio");
-    const btnTechnologies = document.getElementById("btnTechnologies");
-    const btnExperience = document.getElementById("btnExperience");
-    const sectionHero = document.getElementById("hero");
-    const sectionExperience = document.getElementById("experience");
-    const sectionTechnologies = document.getElementById("technologies");
-    const navbar = document.querySelector("header"); // Ajusta si el navbar tiene una clase diferente
-
-    function scrollToSection(section, navbar) {
-      if (navbar) {
-        const offset = section.offsetTop - navbar.offsetHeight;
-        window.scrollTo({ top: offset, behavior: "smooth" });
-      } else {
-        section.scrollIntoView({ behavior: "smooth" });
-      }
     }
 
+    // Función para hacer scroll ajustando el navbar
+    function scrollToSection(section) {
+      if (!section) return;
+
+      const navbar = document.querySelector("header");
+      const navbarHeight = navbar ? navbar.offsetHeight : 0;
+      const offset = section.offsetTop - navbarHeight;
+
+      window.scrollTo({ top: offset, behavior: "smooth" });
+    }
+
+    // Manejar la navegación o el scroll
     function navigateOrScroll(targetSectionId, targetPage) {
-      // Verificar si la sección existe en la página actual
       const section = document.getElementById(targetSectionId);
+
       if (section) {
-        scrollToSection(section, navbar);
+        scrollToSection(section);
       } else {
-        // Si no existe, redirigir a la página con el hash correspondiente
+        // Redirigir y esperar a que cargue la nueva página
         window.location.href = `${targetPage}#${targetSectionId}`;
       }
     }
 
-    // Botón Inicio
-    if (btnInicio) {
-      btnInicio.addEventListener("click", () => navigateOrScroll("hero", "/"));
-    } else {
-      console.warn("No se encontró el botón de inicio.");
+    // Configurar botones después de renderizar
+    function setupButtons() {
+      const btnInicio = document.getElementById("btnInicio");
+      const btnExperience = document.getElementById("btnExperience");
+      const btnTechnologies = document.getElementById("btnTechnologies");
+
+      // Verificar y asignar eventos
+      if (btnInicio) {
+        btnInicio.addEventListener("click", () =>
+          navigateOrScroll("hero", "/")
+        );
+      }
+      if (btnExperience) {
+        btnExperience.addEventListener("click", () =>
+          navigateOrScroll("experience", "/")
+        );
+      }
+      if (btnTechnologies) {
+        btnTechnologies.addEventListener("click", () =>
+          navigateOrScroll("technologies", "/")
+        );
+      }
     }
 
-    // Botón Experience
-    if (btnExperience) {
-      btnExperience.addEventListener("click", () =>
-        navigateOrScroll("experience", "/")
-      );
-    } else {
-      console.warn("No se encontró el botón de experiencia.");
+    // Manejar scroll al cargar la página con hash
+    function handleScrollOnLoad() {
+      const hash = window.location.hash;
+      if (hash) {
+        setTimeout(() => {
+          const section = document.querySelector(hash);
+          if (section) scrollToSection(section);
+        }, 100);
+      }
     }
 
-    // Botón Technologies
-    if (btnTechnologies) {
-      btnTechnologies.addEventListener("click", () =>
-        navigateOrScroll("technologies", "/")
-      );
-    } else {
-      console.warn("No se encontró el botón de tecnologías.");
-    }
+    // Inicialización
+    initObserver();
+    setupButtons();
+    handleScrollOnLoad();
+
+    // Reconectar todo después de un swap de Astro
+    document.addEventListener("astro:after-swap", () => {
+      initObserver();
+      setupButtons();
+      handleScrollOnLoad();
+    });
   });
 </script>

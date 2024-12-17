@@ -1,0 +1,92 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { id: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { data, slug } = project;
+const { title, authors, date, description, image, tecnologias } = data;
+---
+
+<Layout>
+  <section
+    class="fade-in scrollbar-hide sm:h-[calc(100vh-10rem)] max-w-5xl mx-auto flex flex-col p-4 gap-6"
+  >
+    <div class="w-full max-w-[110ch]">
+      <h1 transition:name={`title-${project.slug}`} class="text-3xl font-bold mb-2">
+        {title}{" </>"}
+      </h1>
+    </div>
+
+    <!-- Imagenes -->
+    <img
+      transition:name={`img-${project.slug}`}
+      src={image.url}
+      alt="gitHub"
+      class="w-full h-fit"
+    />
+
+    <!-- Descripción -->
+    <div>
+      <h2 class="text-3xl font-bold mb-2">
+        Descripción{"</>"}
+      </h2>
+      <p class="text-justify ">
+        {description}
+      </p>
+    </div>
+
+    <!-- Autores  -->
+    <div>
+      <h2 class="text-3xl font-bold mb-2 gap-3">
+        Autores{" </>"}
+      </h2>
+      <div class="flex flex-col sm:flex-row">
+        {
+          authors.map((author) => {
+            return (
+              <a class="flex items-center justify-center p-3 gap-3 transition ease-in-out  hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg text-center">
+                <img src="" alt="gitHub" class="w-6 h-6 dark:invert" />
+                <h1 class="text-center">{author}</h1>
+              </a>
+            );
+          })
+        }
+      </div>
+    </div>
+
+    <!-- Tecnologias  -->
+    <div>
+      <h2 class="text-3xl font-bold mb-2 gap-3">
+        Tecnologias{" </>"}
+      </h2>
+        <ul class="flex gap-3 py-6">
+        {tecnologias.map((tec: any) => (
+          <li class="relative group">
+            <img
+              src={tec.img}
+              alt={tec.name}
+              class="w-8 h-8 sm:w-12 sm:h-12 dark:invert transition ease-in-out hover:scale-[104%] hover:opacity-70 cursor-pointer"
+            />
+            <!-- Tooltip personalizado -->
+            <span
+              class="absolute bottom-full mb-2 hidden group-hover:inline-block bg-gray-700 text-white text-xs rounded py-1 px-2 whitespace-nowrap"
+            >
+              {tec.name}
+            </span>
+          </li>
+        ))}
+        </ul>
+      </div>
+    </div>
+
+  </section>
+</Layout>
