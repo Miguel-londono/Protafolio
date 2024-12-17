@@ -2,7 +2,9 @@
 
 import { getCollection } from "astro:content";
 import WindowProject from "./WindowProject.astro";
+import About from "./About.astro";
 import projectsSvg from "../assets/svg/Projects.svg";
+import Experience from "./Experience.astro";
 
 const projects = await getCollection("projects"); // Asegúrate de usar el mismo nombre definido en el esquema
 ---
@@ -12,9 +14,9 @@ const projects = await getCollection("projects"); // Asegúrate de usar el mismo
   id="hero"
   class="fade-in scrollbar-hide sm:h-[calc(100vh-10rem)] max-w-5xl mx-auto flex flex-col p-4 gap-6"
 >
-  <div class="text-3xl w-full font-bold mb-2">
+  <h1 class="text-3xl w-full font-bold mb-2">
     My last projects {"</>"}
-  </div>
+  </h1>
   {
     projects.slice(0, 3).map((project) => {
       const { data, slug } = project;
@@ -31,34 +33,28 @@ const projects = await getCollection("projects"); // Asegúrate de usar el mismo
   </a>
 </section>
 
-<!-- Segunda sección -->
 <section
   id="experience"
-  class="fade-in h-[calc(100vh-10rem)] max-w-5xl mx-auto flex items-center justify-center"
+  class="fade-in min-h-[calc(100vh-4rem)] max-w-5xl mx-auto flex"
 >
-  <div>
-    <h1 class="text-4xl font-bold">Experiencia</h1>
-    <p class="text-lg">Contenido adicional</p>
-  </div>
+  <Experience />
 </section>
 
-<!-- Tercera sección -->
 <section
-  id="technologies"
-  class="fade-in h-[calc(100vh-10rem)] max-w-5xl mx-auto flex items-center justify-center"
+  id="about"
+  class="fade-in min-h-[calc(100vh-4rem)] max-w-5xl mx-auto flex py-6"
 >
-  <div>
-    <h1 class="text-4xl font-bold">Tecnologias Manejadas</h1>
-    <p class="text-lg">Contenido adicional</p>
-  </div>
+  <About />
 </section>
+
+
 <!-- Cuarta sección -->
 <section
-  id="projects"
+  id="certificates"
   class="fade-in h-[calc(100vh-10rem)] max-w-5xl mx-auto flex items-center justify-center"
 >
   <div>
-    <h1 class="text-4xl font-bold">Protectos</h1>
+    <h1 class="text-4xl font-bold">Certificados</h1>
     <p class="text-lg">Contenido adicional</p>
   </div>
 </section>

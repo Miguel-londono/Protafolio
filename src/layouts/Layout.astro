@@ -96,7 +96,7 @@ import expirience from "../assets/svg/Expirience.svg";
               </li>
 
               <li
-                id="btnTechnologies"
+                id="btnAbout"
                 class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
               >
                 <img
@@ -104,9 +104,10 @@ import expirience from "../assets/svg/Expirience.svg";
                   alt="gitHub"
                   class="w-6 h-6 dark:invert"
                 />
-                Tecnologias
+                Sobre Mi
               </li>
               <li
+                id="btnCertificates"
                 class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
               >
                 <img
@@ -114,27 +115,47 @@ import expirience from "../assets/svg/Expirience.svg";
                   alt="gitHub"
                   class="w-6 h-6 dark:invert"
                 />
-                Proyectos
+                Certificados
               </li>
+              <a href="#" onclick="window.location.href = '/projects';">
+                
+                <li
+                  class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
+                >
+                  <img
+                    src={projects.src}
+                    alt="gitHub"
+                    class="w-6 h-6 dark:invert"
+                  />
+                  Proyectos
+                </li>
+              </a>
             </ul>
           </div>
         </div>
         <div class="flex justify-center p-10 gap-6">
-          <img
-            src={github.src}
-            alt="gitHub"
-            class="w-8 h-8 dark:invert transition ease-in-out hover:scale-[104%] hover:opacity-70 cursor-pointer"
-          />
-          <img
-            src={Linkdin.src}
-            alt="gitHub"
-            class="w-8 h-8 dark:invert transition ease-in-out hover:scale-[104%] hover:opacity-70 cursor-pointer"
-          />
-          <img
-            src={X.src}
-            alt="gitHub"
-            class="w-8 h-8 dark:invert transition ease-in-out hover:scale-[104%] hover:opacity-70 cursor-pointer"
-          />
+          <a href="https://github.com/Miguel-londono">
+            <img
+              src={github.src}
+              alt="gitHub"
+              class="w-8 h-8 dark:invert transition ease-in-out hover:scale-[104%] hover:opacity-70 cursor-pointer"
+            />
+          </a>
+          <a href="https://www.linkedin.com/in/miguel-londoño-252a6a313/">
+            <img
+              src={Linkdin.src}
+              alt="gitHub"
+              class="w-8 h-8 dark:invert transition ease-in-out hover:scale-[104%] hover:opacity-70 cursor-pointer"
+            />
+          </a>
+          <a href="https://x.com/GreenVivit">
+            
+            <img
+              src={X.src}
+              alt="gitHub"
+              class="w-8 h-8 dark:invert transition ease-in-out hover:scale-[104%] hover:opacity-70 cursor-pointer"
+            />
+          </a>
         </div>
       </section>
     </aside>
@@ -197,7 +218,8 @@ import expirience from "../assets/svg/Expirience.svg";
     function setupButtons() {
       const btnInicio = document.getElementById("btnInicio");
       const btnExperience = document.getElementById("btnExperience");
-      const btnTechnologies = document.getElementById("btnTechnologies");
+      const btnTechnologies = document.getElementById("btnAbout");
+      const btnCertificates = document.getElementById("btnCertificates");
 
       // Verificar y asignar eventos
       if (btnInicio) {
@@ -212,7 +234,12 @@ import expirience from "../assets/svg/Expirience.svg";
       }
       if (btnTechnologies) {
         btnTechnologies.addEventListener("click", () =>
-          navigateOrScroll("technologies", "/")
+          navigateOrScroll("about", "/")
+        );
+      }
+      if (btnCertificates) {
+        btnCertificates.addEventListener("click", () =>
+          navigateOrScroll("certificates", "/")
         );
       }
     }
