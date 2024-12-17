@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
+import auhtor from "../../assets/svg/author.svg"
 import Layout from "../../layouts/Layout.astro";
-import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -20,55 +20,76 @@ const { title, authors, date, description, image, tecnologias } = data;
   <section
     class="fade-in scrollbar-hide sm:h-[calc(100vh-10rem)] max-w-5xl mx-auto flex flex-col p-4 gap-6"
   >
-    <div class="w-full max-w-[110ch]">
+    <!-- Título y botones -->
+    <div class="w-full flex flex-col sm:flex-row gap-3">
       <h1 transition:name={`title-${project.slug}`} class="text-3xl font-bold mb-2">
         {title}{" </>"}
       </h1>
+      <a
+        href="https://github.com/Miguel-londono/App-Peliculas.git"
+        class="flex items-center justify-center p-3 gap-3 transition ease-in-out hover:scale-[102%] opacity-80 cursor-pointer bg-slate-600 rounded-lg text-center"
+      >
+        {`Deploy`}
+      </a>
+      <span class="ml-auto self-end">{date}</span>
     </div>
 
-    <!-- Imagenes -->
-    <img
-      transition:name={`img-${project.slug}`}
-      src={image.url}
-      alt="gitHub"
-      class="w-full h-fit"
-    />
+    <!-- Carrusel de Imágenes -->
+    <div class="relative w-full mx-auto">
+      <!-- Contenedor de imágenes -->
+      <div id="carousel" class="flex transition-transform duration-700 ease-in-out">
+        <img
+          transition:name={`img-${project.slug}`}
+          src={image.url}
+          alt="Imagen principal"
+          class="w-full h-fit"
+        />
+        <img src="https://via.placeholder.com/800x400/ff7f7f" alt="Imagen 2" class="w-full flex-shrink-0" />
+        <img src="https://via.placeholder.com/800x400/77aaff" alt="Imagen 3" class="w-full flex-shrink-0" />
+      </div>
+
+      <!-- Botones de navegación -->
+      <button
+        id="prevBtn"
+        class="absolute top-1/2 left-4 -translate-y-1/2 bg-black/30 text-white p-2 rounded-full hover:bg-black/50"
+      >
+        &#10094;
+      </button>
+      <button
+        id="nextBtn"
+        class="absolute top-1/2 right-4 -translate-y-1/2 bg-black/30 text-white p-2 rounded-full hover:bg-black/50"
+      >
+        &#10095;
+      </button>
+    </div>
 
     <!-- Descripción -->
     <div>
-      <h2 class="text-3xl font-bold mb-2">
-        Descripción{"</>"}
-      </h2>
-      <p class="text-justify ">
-        {description}
-      </p>
+      <h2 class="text-3xl font-bold mb-2">Descripción{"</>"}</h2>
+      <p class="text-justify ">{description}</p>
     </div>
 
-    <!-- Autores  -->
+    <!-- Autores -->
     <div>
-      <h2 class="text-3xl font-bold mb-2 gap-3">
-        Autores{" </>"}
-      </h2>
+      <h2 class="text-3xl font-bold mb-2 gap-3">Autores{" </>"}</h2>
       <div class="flex flex-col sm:flex-row">
-        {
-          authors.map((author) => {
-            return (
-              <a class="flex items-center justify-center p-3 gap-3 transition ease-in-out  hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg text-center">
-                <img src="" alt="gitHub" class="w-6 h-6 dark:invert" />
-                <h1 class="text-center">{author}</h1>
-              </a>
-            );
-          })
-        }
+        {authors.map((author) => {
+          return (
+            <a
+              class="flex items-center justify-center p-3 gap-3 transition ease-in-out hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg text-center"
+            >
+              <img src={auhtor.src} alt="gitHub" class="w-6 h-6 dark:invert" />
+              <h1 class="text-center">{author}</h1>
+            </a>
+          );
+        })}
       </div>
     </div>
 
-    <!-- Tecnologias  -->
+    <!-- Tecnologías -->
     <div>
-      <h2 class="text-3xl font-bold mb-2 gap-3">
-        Tecnologias{" </>"}
-      </h2>
-        <ul class="flex gap-3 py-6">
+      <h2 class="text-3xl font-bold mb-2 gap-3">Tecnologias{" </>"}</h2>
+      <ul class="flex gap-3 py-6">
         {tecnologias.map((tec: any) => (
           <li class="relative group">
             <img
@@ -84,9 +105,35 @@ const { title, authors, date, description, image, tecnologias } = data;
             </span>
           </li>
         ))}
-        </ul>
-      </div>
+      </ul>
     </div>
-
   </section>
 </Layout>
+
+<script>
+  const carousel = document.getElementById("carousel");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  let index = 0;
+  const images = document.querySelectorAll("#carousel img");
+  const totalImages = images.length;
+
+  // Función para mover el carrusel
+  function updateCarousel() {
+    const offset = -index * 100;
+    carousel.style.transform = `translateX(${offset}%)`;
+  }
+
+  // Botón siguiente
+  nextBtn.addEventListener("click", () => {
+    index = (index + 1) % totalImages;
+    updateCarousel();
+  });
+
+  // Botón anterior
+  prevBtn.addEventListener("click", () => {
+    index = (index - 1 + totalImages) % totalImages;
+    updateCarousel();
+  });
+</script>
