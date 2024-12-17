@@ -9,18 +9,11 @@ description:
 image:
   url: "/public/proyectos/four-parks/FourParks-Landing.jpg"
   alt: Logo o imagen representativa del proyecto Four-Parks Colombia
-tecnologias:
-  tec1:
-    name: React con Next
-    img: "/public/images/react-next.png"
-  tec2:
-    name: Jira
-    img: "/public/images/jira.png"
-  tec3:
-    name: Django
-    img: "/public/images/django.png"
+tecnologias: [
+    {name: React, img: "/src/assets/svg/tecs/React.svg"},
+    {name: JavaScript, img: "/src/assets/svg/tecs/JavaS.svg"}
+]
 ---
-
 
 El proyecto Four-Parks Colombia nace como una iniciativa innovadora para transformar la gestión de parqueaderos en el país, adoptando tecnologías avanzadas y principios sólidos de ingeniería de software. Este proyecto tiene como objetivo principal desarrollar una plataforma centralizada que permita a las empresas del sector gestionar de manera eficiente sus operaciones, optimizar procesos y ofrecer una experiencia de usuario fluida y moderna.
 

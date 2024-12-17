@@ -7,16 +7,10 @@ description:
 image:
   url: "/public/proyectos/four-parks/FourParks-Landing.jpg"
   alt: Logo o imagen representativa del proyecto EcoFleet Logistics
-tecnologias:
-  tec1:
-    name: Vue.js
-    img: "/public/images/vue.png"
-  tec2:
-    name: Flask
-    img: "/public/images/flask.png"
-  tec3:
-    name: MongoDB
-    img: "/public/images/mongodb.png"
+tecnologias: [
+    {name: React, img: "/src/assets/svg/tecs/React.svg"},
+    {name: JavaScript, img: "/src/assets/svg/tecs/JavaS.svg"}
+]
 ---
 
 EcoFleet Logistics impulsa la sostenibilidad ambiental mediante la gestión inteligente de flotas vehiculares, ayudando a reducir costos y minimizar el impacto ecológico.
@@ -24,6 +18,7 @@ EcoFleet Logistics impulsa la sostenibilidad ambiental mediante la gestión inte
 Propósito del Proyecto  
 Optimizar las operaciones logísticas mediante el uso de tecnologías avanzadas, mejorando la eficiencia y reduciendo las emisiones contaminantes.
 
-Impacto Esperado  
-- **Empresas:** Ahorro significativo en costos operativos.  
-- **Medio ambiente:** Reducción de la huella de carbono en el transporte.  
+Impacto Esperado
+
+- **Empresas:** Ahorro significativo en costos operativos.
+- **Medio ambiente:** Reducción de la huella de carbono en el transporte.

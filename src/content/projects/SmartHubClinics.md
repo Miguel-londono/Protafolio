@@ -7,16 +7,10 @@ description:
 image:
   url: "/public/proyectos/four-parks/FourParks-Landing.jpg"
   alt: Logo o imagen representativa del proyecto SmartHub Clinics
-tecnologias:
-  tec1:
-    name: React con Next
-    img: "/public/images/react-next.png"
-  tec2:
-    name: Django
-    img: "/public/images/django.png"
-  tec3:
-    name: PostgreSQL
-    img: "/public/images/postgresql.png"
+tecnologias: [
+    {name: React, img: "/src/assets/svg/tecs/React.svg"},
+    {name: JavaScript, img: "/src/assets/svg/tecs/JavaS.svg"}
+]
 ---
 
 El proyecto SmartHub Clinics tiene como objetivo optimizar la administración de clínicas mediante la implementación de un sistema centralizado que facilite la gestión operativa y mejore la experiencia del paciente.

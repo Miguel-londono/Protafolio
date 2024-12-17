@@ -27,18 +27,18 @@ import expirience from "../assets/svg/Expirience.svg";
       <section class="fade-in max-w-5xl mx-auto">
         <div class="p-4 absolute right-0">
           <button
-          id="mobile-open-button"
-          class="text-3xl sm:hidden focus:outline-none"
-          >&#9776
-        </button>
-      </div>
-      <div
-      class="flex flex-col-reverse justify-between p-4 gap-4 sm:flex-row items-center sm:gap-8"
-      >
-      <div>
-        <p>Hey there 👋</p>
-        <h1 class="text-xl sm:text-3xl font-bold">
-          Hey, Soy Miguel londoño
+            id="mobile-open-button"
+            class="text-3xl sm:hidden focus:outline-none"
+            >&#9776
+          </button>
+        </div>
+        <div
+          class="flex flex-col-reverse justify-between p-4 gap-4 sm:flex-row items-center sm:gap-8"
+        >
+          <div>
+            <p>Hey there 👋</p>
+            <h1 class="text-xl sm:text-3xl font-bold">
+              Hey, Soy Miguel londoño
             </h1>
             <h2 class="text-sm sm:text-base">
               Desarrollador Web full stack en formacion, Especialociado en crear
@@ -46,9 +46,9 @@ import expirience from "../assets/svg/Expirience.svg";
             </h2>
           </div>
           <img
-          src={maleta.src}
-          alt="maleta"
-          class="w-24 h-24 sm:w-36 sm:h-36 p-3"
+            src={maleta.src}
+            alt="maleta"
+            class="w-24 h-24 sm:w-36 sm:h-36 p-3"
           />
         </div>
       </section>
@@ -80,9 +80,9 @@ import expirience from "../assets/svg/Expirience.svg";
                 <img src={home.src} alt="gitHub" class="w-6 h-6 dark:invert" />
                 Inicio
               </li>
-              
+
               <li
-              id="btnExperience"
+                id="btnExperience"
                 class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
               >
                 <img
@@ -94,7 +94,7 @@ import expirience from "../assets/svg/Expirience.svg";
               </li>
 
               <li
-              id="btnTechnologies"
+                id="btnTechnologies"
                 class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
               >
                 <img
@@ -190,50 +190,49 @@ import expirience from "../assets/svg/Expirience.svg";
     const sectionTechnologies = document.getElementById("technologies");
     const navbar = document.querySelector("header"); // Ajusta si el navbar tiene una clase diferente
 
-    // Verificar si btnInicio, sectionHero y navbar existen antes de agregar el event listener
-    if (btnInicio && sectionHero) {
-      btnInicio.addEventListener("click", () => {
-        if (navbar) {
-          // Si el navbar existe, ajusta el scroll considerando su altura
-          const offset = sectionHero.offsetTop - navbar.offsetHeight;
-          window.scrollTo({ top: offset, behavior: "smooth" });
-        } else {
-          // Si el navbar no existe, simplemente hace scroll al top de la sección hero
-          sectionHero.scrollIntoView({ behavior: "smooth" });
-        }
-      });
-    } else {
-      console.warn("No se encontró el botón de inicio o la sección hero.");
+    function scrollToSection(section, navbar) {
+      if (navbar) {
+        const offset = section.offsetTop - navbar.offsetHeight;
+        window.scrollTo({ top: offset, behavior: "smooth" });
+      } else {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
     }
 
-    if (btnExperience && sectionExperience) {
-      btnExperience.addEventListener("click", () => {
-        if (navbar) {
-          // Si el navbar existe, ajusta el scroll considerando su altura
-          const offset = sectionExperience.offsetTop - navbar.offsetHeight;
-          window.scrollTo({ top: offset, behavior: "smooth" });
-        } else {
-          // Si el navbar no existe, simplemente hace scroll al top de la sección hero
-          sectionExperience.scrollIntoView({ behavior: "smooth" });
-        }
-      });
-    } else {
-      console.warn("No se encontró el botón de inicio o la sección hero.");
+    function navigateOrScroll(targetSectionId, targetPage) {
+      // Verificar si la sección existe en la página actual
+      const section = document.getElementById(targetSectionId);
+      if (section) {
+        scrollToSection(section, navbar);
+      } else {
+        // Si no existe, redirigir a la página con el hash correspondiente
+        window.location.href = `${targetPage}#${targetSectionId}`;
+      }
     }
 
-    if (btnTechnologies && sectionTechnologies) {
-      btnTechnologies.addEventListener("click", () => {
-        if (navbar) {
-          // Si el navbar existe, ajusta el scroll considerando su altura
-          const offset = sectionTechnologies.offsetTop - navbar.offsetHeight;
-          window.scrollTo({ top: offset, behavior: "smooth" });
-        } else {
-          // Si el navbar no existe, simplemente hace scroll al top de la sección hero
-          sectionTechnologies.scrollIntoView({ behavior: "smooth" });
-        }
-      });
+    // Botón Inicio
+    if (btnInicio) {
+      btnInicio.addEventListener("click", () => navigateOrScroll("hero", "/"));
     } else {
-      console.warn("No se encontró el botón de inicio o la sección hero.");
+      console.warn("No se encontró el botón de inicio.");
+    }
+
+    // Botón Experience
+    if (btnExperience) {
+      btnExperience.addEventListener("click", () =>
+        navigateOrScroll("experience", "/")
+      );
+    } else {
+      console.warn("No se encontró el botón de experiencia.");
+    }
+
+    // Botón Technologies
+    if (btnTechnologies) {
+      btnTechnologies.addEventListener("click", () =>
+        navigateOrScroll("technologies", "/")
+      );
+    } else {
+      console.warn("No se encontró el botón de tecnologías.");
     }
   });
 </script>

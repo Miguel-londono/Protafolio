@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import WindowProject from "./WindowProject.astro";
+import projectsSvg from "../assets/svg/Projects.svg";
+
+const projects = await getCollection("projects");
+---
+
+<section
+  id="hero"
+  class="fade-in scrollbar-hide sm:h-[calc(100vh-10rem)] max-w-5xl mx-auto flex flex-col p-4 gap-6"
+>
+  <div class="text-3xl w-full font-bold mb-2">
+    All my projects {"</>"}
+  </div>
+  {
+    projects.map((project) => {
+      const { data, slug } = project;
+      return <WindowProject key={slug} {...data} />;
+    })
+  }
+
+  <a
+    href="/"
+    class="flex items-center justify-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg text-center w-full"
+  >
+    <img src={projectsSvg.src} alt="gitHub" class="w-6 h-6 dark:invert" />
+    <h1 class="text-center">Regresar</h1>
+  </a>
+</section>

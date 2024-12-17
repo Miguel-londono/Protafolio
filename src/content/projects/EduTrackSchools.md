@@ -7,16 +7,10 @@ description:
 image:
   url: "/public/proyectos/four-parks/FourParks-Landing.jpg"
   alt: Logo o imagen representativa del proyecto EduTrack Schools
-tecnologias:
-  tec1:
-    name: Angular
-    img: "/public/images/angular.png"
-  tec2:
-    name: Spring Boot
-    img: "/public/images/spring-boot.png"
-  tec3:
-    name: Firebase
-    img: "/public/images/firebase.png"
+tecnologias: [
+    {name: React, img: "/src/assets/svg/tecs/React.svg"},
+    {name: JavaScript, img: "/src/assets/svg/tecs/JavaS.svg"}
+]
 ---
 
 EduTrack Schools busca transformar la gestión académica mediante la digitalización y automatización de procesos clave en instituciones educativas.
