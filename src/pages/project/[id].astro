@@ -111,29 +111,42 @@ const { title, authors, date, description, image, tecnologias } = data;
 </Layout>
 
 <script>
-  const carousel = document.getElementById("carousel");
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
+const carousel = document.getElementById("carousel") as HTMLElement;
+const prevBtn = document.getElementById("prevBtn") as HTMLButtonElement;
+const nextBtn = document.getElementById("nextBtn") as HTMLButtonElement;
 
-  let index = 0;
-  const images = document.querySelectorAll("#carousel img");
-  const totalImages = images.length;
+// Verifica que los elementos existen
+if (!carousel || !prevBtn || !nextBtn) {
+  throw new Error("No se encontraron los elementos del carrusel.");
+}
 
-  // Función para mover el carrusel
-  function updateCarousel() {
-    const offset = -index * 100;
-    carousel.style.transform = `translateX(${offset}%)`;
-  }
+let index: number = 0;
 
-  // Botón siguiente
-  nextBtn.addEventListener("click", () => {
-    index = (index + 1) % totalImages;
-    updateCarousel();
-  });
+// Seleccionar todas las imágenes dentro del carrusel
+const images: NodeListOf<HTMLImageElement> = document.querySelectorAll("#carousel img");
+const totalImages: number = images.length;
 
-  // Botón anterior
-  prevBtn.addEventListener("click", () => {
-    index = (index - 1 + totalImages) % totalImages;
-    updateCarousel();
-  });
+// Validar que hay imágenes
+if (totalImages === 0) {
+  throw new Error("No se encontraron imágenes en el carrusel.");
+}
+
+// Función para mover el carrusel
+function updateCarousel(): void {
+  const offset: number = -index * 100; // Mueve el carrusel en porcentajes
+  carousel.style.transform = `translateX(${offset}%)`;
+}
+
+// Botón siguiente
+nextBtn.addEventListener("click", (): void => {
+  index = (index + 1) % totalImages; // Ir al siguiente índice
+  updateCarousel();
+});
+
+// Botón anterior
+prevBtn.addEventListener("click", (): void => {
+  index = (index - 1 + totalImages) % totalImages; // Ir al índice anterior
+  updateCarousel();
+});
+
 </script>
