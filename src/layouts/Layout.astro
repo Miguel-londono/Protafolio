@@ -178,7 +178,7 @@ import cv from "../assets/svg/CV.svg";
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const observerOptions = { threshold: 0.1 };
-    let observer;
+    let observer: any;
 
     // Función para inicializar IntersectionObserver
     function initObserver() {
@@ -205,7 +205,7 @@ import cv from "../assets/svg/CV.svg";
     }
 
     // Función para hacer scroll ajustando el navbar
-    function scrollToSection(section) {
+    function scrollToSection(section: any) {
       if (!section) return;
 
       const navbar = document.querySelector("header");
@@ -216,7 +216,7 @@ import cv from "../assets/svg/CV.svg";
     }
 
     // Manejar la navegación o el scroll
-    function navigateOrScroll(targetSectionId, targetPage) {
+    function navigateOrScroll(targetSectionId : any , targetPage: any) {
       const section = document.getElementById(targetSectionId);
 
       if (section) {
