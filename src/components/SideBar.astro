@@ -9,101 +9,138 @@ import expirience from "../assets/svg/Expirience.svg";
 ---
 
 <aside>
-    <section
-      class="fade-in hidden sm:flex sm:flex-col fixed top-0 left-0 h-screen w-64 dark:bg-gray-950 bg-gray-300 z-10 dark:text-slate-50"
-    >
-      <div class="flex flex-col flex-grow items-center gap-10 pt-11">
-        <h1 class="text-3xl font-bold">Protafolio</h1>
-        <a href="/" target="_blank" rel="noopener noreferrer">
-          <div class="transition ease-in-out hover:scale-[103%] block m-auto">
-            <img
-              src={profile.src}
-              alt="img-profile"
-              class="rounded-full h-32 w-32"
-            />
-          </div>
-        </a>
-        <div>
-          <ul>
-            <li
-              id="btnInicio"
-              class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
-            >
-              <img src={home.src} alt="gitHub" class="w-6 h-6 dark:invert" />
-              Inicio
-            </li>
-
-            <li
-              id="btnExperience"
-              class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
-            >
-              <img
-                src={expirience.src}
-                alt="gitHub"
-                class="w-6 h-6 dark:invert"
-              />
-              Experiencia
-            </li>
-
-            <li
-              id="btnAbout"
-              class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
-            >
-              <img
-                src={expirience.src}
-                alt="gitHub"
-                class="w-6 h-6 dark:invert"
-              />
-              Sobre Mi
-            </li>
-            <li
-              id="btnCertificates"
-              class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
-            >
-              <img
-                src={projects.src}
-                alt="gitHub"
-                class="w-6 h-6 dark:invert"
-              />
-              Certificados
-            </li>
-            <a href="#" onclick="window.location.href = '/projects';">
-              <li
-                class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
-              >
-                <img
-                  src={projects.src}
-                  alt="gitHub"
-                  class="w-6 h-6 dark:invert"
-                />
-                Proyectos
-              </li>
-            </a>
-          </ul>
+  <section
+    id="mobile-sidebar"
+    hidden
+    class="fade-in fixed top-0 left-0 h-screen w-64 dark:bg-gray-950 bg-gray-300 z-10 dark:text-slate-50 transition-transform transform sm:translate-x-0 sm:flex sm:flex-col"
+  >
+    <div class="flex flex-col flex-grow items-center gap-10 pt-11">
+      <h1 class="text-3xl font-bold">Portafolio</h1>
+      <a href="/" target="_blank" rel="noopener noreferrer">
+        <div class="transition ease-in-out hover:scale-[103%] block m-auto">
+          <img
+            src={profile.src}
+            alt="img-profile"
+            class="rounded-full h-32 w-32"
+          />
         </div>
+      </a>
+      <div>
+        <ul>
+          <li
+            id="btnInicio"
+            class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
+          >
+            <img src={home.src} alt="Home" class="w-6 h-6 dark:invert" />
+            Inicio
+          </li>
+          <li
+            id="btnExperience"
+            class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
+          >
+            <img
+              src={expirience.src}
+              alt="Experience"
+              class="w-6 h-6 dark:invert"
+            />
+            Experiencia
+          </li>
+          <li
+            id="btnAbout"
+            class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
+          >
+            <img
+              src={expirience.src}
+              alt="About"
+              class="w-6 h-6 dark:invert"
+            />
+            Sobre Mi
+          </li>
+          <li
+            id="btnCertificates"
+            class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
+          >
+            <img
+              src={projects.src}
+              alt="Certificates"
+              class="w-6 h-6 dark:invert"
+            />
+            Certificados
+          </li>
+          <li
+            class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
+          >
+            <img
+              src={projects.src}
+              alt="Projects"
+              class="w-6 h-6 dark:invert"
+            />
+            Proyectos
+          </li>
+        </ul>
       </div>
-      <div class="flex justify-center p-10 gap-6">
-        <a href="https://github.com/Miguel-londono">
-          <img
-            src={github.src}
-            alt="gitHub"
-            class="w-8 h-8 dark:invert transition ease-in-out hover:scale-[104%] hover:opacity-70 cursor-pointer"
-          />
-        </a>
-        <a href="https://www.linkedin.com/in/miguel-londoño-252a6a313/">
-          <img
-            src={Linkdin.src}
-            alt="gitHub"
-            class="w-8 h-8 dark:invert transition ease-in-out hover:scale-[104%] hover:opacity-70 cursor-pointer"
-          />
-        </a>
-        <a href="https://x.com/GreenVivit">
-          <img
-            src={X.src}
-            alt="gitHub"
-            class="w-8 h-8 dark:invert transition ease-in-out hover:scale-[104%] hover:opacity-70 cursor-pointer"
-          />
-        </a>
-      </div>
-    </section>
-  </aside>
+    </div>
+    <div class="flex justify-center p-10 gap-6">
+      <a href="https://github.com/Miguel-londono">
+        <img
+          src={github.src}
+          alt="GitHub"
+          class="w-8 h-8 dark:invert transition ease-in-out hover:scale-[104%] hover:opacity-70 cursor-pointer"
+        />
+      </a>
+      <a href="https://www.linkedin.com/in/miguel-londoño-252a6a313/">
+        <img
+          src={Linkdin.src}
+          alt="LinkedIn"
+          class="w-8 h-8 dark:invert transition ease-in-out hover:scale-[104%] hover:opacity-70 cursor-pointer"
+        />
+      </a>
+      <a href="https://x.com/GreenVivit">
+        <img
+          src={X.src}
+          alt="Twitter"
+          class="w-8 h-8 dark:invert transition ease-in-out hover:scale-[104%] hover:opacity-70 cursor-pointer"
+        />
+      </a>
+    </div>
+    <!-- Botón para cerrar el sidebar en móvil -->
+    <button
+      id="mobile-close-button"
+      class="absolute top-4 right-4 text-2xl sm:hidden focus:outline-none"
+    >
+      &times;
+    </button>
+  </section>
+</aside>
+<script>
+  const mobileSidebar = document.getElementById("mobile-sidebar");
+  const mobileOpenButton = document.getElementById("mobile-open-button");
+  const mobileCloseButton = document.getElementById("mobile-close-button");
+
+  // Abrir el sidebar
+  mobileOpenButton.addEventListener("click", () => {
+    mobileSidebar.hidden = false; // Quitar el atributo hidden
+    mobileSidebar.style.transform = "translateX(0)";
+  });
+
+  // Cerrar el sidebar
+  mobileCloseButton.addEventListener("click", () => {
+    mobileSidebar.style.transform = "translateX(-100%)";
+    setTimeout(() => {
+      mobileSidebar.hidden = true; // Volver a ocultar con hidden
+    }, 300); // Tiempo para que complete la transición
+  });
+
+  // Cerrar el sidebar al hacer clic fuera de él
+  window.addEventListener("click", (event) => {
+    if (
+      !mobileSidebar.contains(event.target) &&
+      !mobileOpenButton.contains(event.target)
+    ) {
+      mobileSidebar.style.transform = "translateX(-100%)";
+      setTimeout(() => {
+        mobileSidebar.hidden = true;
+      }, 300);
+    }
+  });
+</script>

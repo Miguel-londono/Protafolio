@@ -68,12 +68,15 @@ import ButtonToggle from "./ButtonToggle.astro";
       const isSmallScreen = window.innerWidth < 640; // 'sm' breakpoint en Tailwind es 640px
   
       // Ajusta el alto del header según el tamaño de pantalla
-      const height = isSmallScreen
-        ? Math.max(90, 300 - scrollY) // Para pantallas menores a 'sm'
-        : Math.max(70, 185 - scrollY); // Para pantallas 'sm' y mayores
+      const height = isSmallScreen ? 90 : 70; // Altura fija tras hacer scroll
   
-      // Ajusta el alto del header
-      header.style.height = `${height}px`;
+      // Ajusta el alto del header de inmediato
+      if (scrollY > 0) {
+        header.style.height = `${height}px`;
+      } else {
+        header.style.height = isSmallScreen ? "300px" : "185px"; // Altura inicial
+      }
+  
       header.style.overflow = "hidden";
       header.style.transition = "height 0.3s ease";
   
