@@ -1,0 +1,81 @@
+---
+import maleta from "../assets/img/maleta.png";
+import cv from "../assets/svg/CV.svg";
+---
+<header id="header" class="sticky top-0 z-10 dark:bg-gray-950 bg-gray-300 sm:ml-64 dark:text-slate-50 ">
+    <div class="p-4 absolute left-0">
+        <button
+          id="themeToggle"
+          class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-300 dark:bg-gray-700 shadow-md hover:shadow-lg transition-all duration-300"
+        >
+          <svg
+            id="sunIcon"
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 text-yellow-500 dark:hidden"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.364-7.364l-1.414 1.414M6.343 17.657l-1.414-1.414m12.728 0l-1.414 1.414M6.343 6.343L4.93 4.93M12 8a4 4 0 100 8 4 4 0 000-8z"
+            ></path>
+          </svg>
+          <svg
+            id="moonIcon"
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 text-blue-500 hidden dark:block"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              d="M17.293 13.293a8 8 0 11-10.586-10.586A7 7 0 1017.293 13.293z"
+            ></path>
+          </svg>
+    </div>
+    <section class="fade-in max-w-5xl mx-auto">
+      <div class="p-4 absolute right-0">
+        <button
+          id="mobile-open-button"
+          class="text-3xl sm:hidden focus:outline-none"
+          >&#9776
+        </button>
+      </div>
+      <div
+        class="flex flex-col-reverse justify-between p-4 gap-4 sm:flex-row items-center sm:gap-8"
+      >
+        <div>
+          <p>Hey there 👋</p>
+          <div class="flex flex-row gap-2 sm:gap-3 sm:items-center">
+            <h1 class="text-xl sm:text-3xl font-bold flex-grow">
+              Hey, Soy Miguel londoño
+            </h1>
+            <a
+              href="CV-Miguel-Londoño.pdf"
+              type="downland"
+              target="_blank"
+              class="px-3 flex items-center p-1 gap-3 transition ease-in-out hover:scale-[101%] hover:opacity-80 cursor-pointer bg-slate-600 rounded-lg"
+            >
+              <img
+                src={cv.src}
+                alt="gitHub"
+                class="w-4 h-4 sm:w-6 sm:h-6 dark:invert"
+              />
+              <span class="text-[11px]"> Download CV </span>
+            </a>
+          </div>
+          <h2 class="text-sm sm:text-base">
+            Desarrollador Web full stack en formacion, Especialociado en crear
+            aplicaciones y soluciones unicas.
+          </h2>
+        </div>
+        <img
+          src={maleta.src}
+          alt="maleta"
+          class="w-24 h-24 sm:w-36 sm:h-36 p-3"
+        />
+      </div>
+    </section>
+  </header>

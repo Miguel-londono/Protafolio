@@ -5,6 +5,7 @@ export default {
   content: [
     "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}", // Archivos escaneados por Tailwind
   ],
+  darkMode: 'class', // Activa el modo oscuro con la clase 'dark'
   theme: {
     extend: {
       fontFamily: {
@@ -13,5 +14,6 @@ export default {
     },
   },
   plugins: [
-    require("@tailwindcss/typography")],
+    require("@tailwindcss/typography"),
+  ],
 };

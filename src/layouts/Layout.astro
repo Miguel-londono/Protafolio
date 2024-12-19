@@ -1,16 +1,10 @@
 ---
-import maleta from "../assets/img/maleta.png";
+
 import "../styles/global.css";
-import { ClientRouter } from 'astro:transitions';
-//sidebar
-import profile from "../../public/Profile.png";
-import github from "../assets/svg/Github.svg";
-import Linkdin from "../assets/svg/Linkedin.svg";
-import X from "../assets/svg/X.svg";
-import home from "../assets/svg/Home.svg";
-import projects from "../assets/svg/Projects.svg";
-import expirience from "../assets/svg/Expirience.svg";
-import cv from "../assets/svg/CV.svg";
+import { ClientRouter } from "astro:transitions";
+
+import SideBar from "../components/SideBar.astro";
+import Header from "../components/Header.astro";
 ---
 
 <!doctype html>
@@ -21,161 +15,39 @@ import cv from "../assets/svg/CV.svg";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>Protafolio | Miguel Londoño</title>
-    <ClientRouter/>
+    <ClientRouter />
   </head>
-  <body class="bg-slate-50 dark:bg-gray-900 dark:text-slate-50">
-    <header id="header" class="sticky top-0 z-10 dark:bg-gray-950 sm:ml-64">
-      <section class="fade-in max-w-5xl mx-auto">
-        <div class="p-4 absolute right-0">
-          <button
-            id="mobile-open-button"
-            class="text-3xl sm:hidden focus:outline-none"
-            >&#9776
-
-          </button>
-        </div>
-        <div
-          class="flex flex-col-reverse justify-between p-4 gap-4 sm:flex-row items-center sm:gap-8"
-        >
-          <div>
-            <p>Hey there 👋</p>
-            <div class="flex flex-row gap-2 sm:gap-3 sm:items-center">
-              <h1 class="text-xl sm:text-3xl font-bold flex-grow">
-                Hey, Soy Miguel londoño
-              </h1>
-              <a href="CV-Miguel-Londoño.pdf" type="downland" target="_blank" class="px-3 flex items-center p-1 gap-3 transition ease-in-out hover:scale-[101%] hover:opacity-80 cursor-pointer bg-slate-600 rounded-lg ">
-                <img
-                  src={cv.src}
-                  alt="gitHub"
-                  class="w-4 h-4 sm:w-6 sm:h-6 dark:invert"
-                />
-                <span class="text-[11px] ">
-                  Download CV
-                </span>
-              </a>
-            </div>
-            <h2 class="text-sm sm:text-base">
-              Desarrollador Web full stack en formacion, Especialociado en crear
-              aplicaciones y soluciones unicas.
-            </h2>
-          </div>
-          <img
-            src={maleta.src}
-            alt="maleta"
-            class="w-24 h-24 sm:w-36 sm:h-36 p-3"
-          />
-        </div>
-      </section>
-    </header>
-    <main class="sm:ml-64">
+  <body class=" ">
+    <Header/>
+    <SideBar />
+    <main class="sm:ml-64 bg-gray-100 text-black dark:bg-gray-900 dark:text-slate-50">
       <slot />
     </main>
-    <aside>
-      <section
-        class="fade-in hidden sm:flex sm:flex-col fixed top-0 left-0 h-screen w-64 dark:bg-gray-950 z-10"
-      >
-        <div class="flex flex-col flex-grow items-center gap-10 pt-11">
-          <h1 class="text-3xl font-bold">Protafolio</h1>
-          <a href="/" target="_blank" rel="noopener noreferrer">
-            <div class="transition ease-in-out hover:scale-[103%] block m-auto">
-              <img
-                src={profile.src}
-                alt="img-profile"
-                class="rounded-full h-32 w-32"
-              />
-            </div>
-          </a>
-          <div>
-            <ul>
-              <li
-                id="btnInicio"
-                class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
-              >
-                <img src={home.src} alt="gitHub" class="w-6 h-6 dark:invert" />
-                Inicio
-              </li>
-
-              <li
-                id="btnExperience"
-                class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
-              >
-                <img
-                  src={expirience.src}
-                  alt="gitHub"
-                  class="w-6 h-6 dark:invert"
-                />
-                Experiencia
-              </li>
-
-              <li
-                id="btnAbout"
-                class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
-              >
-                <img
-                  src={expirience.src}
-                  alt="gitHub"
-                  class="w-6 h-6 dark:invert"
-                />
-                Sobre Mi
-              </li>
-              <li
-                id="btnCertificates"
-                class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
-              >
-                <img
-                  src={projects.src}
-                  alt="gitHub"
-                  class="w-6 h-6 dark:invert"
-                />
-                Certificados
-              </li>
-              <a href="#" onclick="window.location.href = '/projects';">
-                
-                <li
-                  class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
-                >
-                  <img
-                    src={projects.src}
-                    alt="gitHub"
-                    class="w-6 h-6 dark:invert"
-                  />
-                  Proyectos
-                </li>
-              </a>
-            </ul>
-          </div>
-        </div>
-        <div class="flex justify-center p-10 gap-6">
-          <a href="https://github.com/Miguel-londono">
-            <img
-              src={github.src}
-              alt="gitHub"
-              class="w-8 h-8 dark:invert transition ease-in-out hover:scale-[104%] hover:opacity-70 cursor-pointer"
-            />
-          </a>
-          <a href="https://www.linkedin.com/in/miguel-londoño-252a6a313/">
-            <img
-              src={Linkdin.src}
-              alt="gitHub"
-              class="w-8 h-8 dark:invert transition ease-in-out hover:scale-[104%] hover:opacity-70 cursor-pointer"
-            />
-          </a>
-          <a href="https://x.com/GreenVivit">
-            
-            <img
-              src={X.src}
-              alt="gitHub"
-              class="w-8 h-8 dark:invert transition ease-in-out hover:scale-[104%] hover:opacity-70 cursor-pointer"
-            />
-          </a>
-        </div>
-      </section>
-    </aside>
   </body>
 </html>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    const themeToggle = document.getElementById("themeToggle") as any;
+    const body = document.body;
+
+    // Cargar el tema inicial
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      body.classList.add("dark");
+    } else {
+      body.classList.remove("dark");
+    }
+
+    // Cambiar el tema al hacer clic
+    themeToggle.addEventListener("click", () => {
+      const isDarkMode = body.classList.toggle("dark");
+      localStorage.theme = isDarkMode ? "dark" : "light";
+    });
+
     const observerOptions = { threshold: 0.1 };
     let observer: any;
 
@@ -215,7 +87,7 @@ import cv from "../assets/svg/CV.svg";
     }
 
     // Manejar la navegación o el scroll
-    function navigateOrScroll(targetSectionId : any , targetPage: any) {
+    function navigateOrScroll(targetSectionId: any, targetPage: any) {
       const section = document.getElementById(targetSectionId);
 
       if (section) {
