@@ -113,9 +113,9 @@ import expirience from "../assets/svg/Expirience.svg";
   </section>
 </aside>
 <script>
-  const mobileSidebar = document.getElementById("mobile-sidebar");
-  const mobileOpenButton = document.getElementById("mobile-open-button");
-  const mobileCloseButton = document.getElementById("mobile-close-button");
+  const mobileSidebar = document.getElementById("mobile-sidebar") as any;
+  const mobileOpenButton = document.getElementById("mobile-open-button" as any);
+  const mobileCloseButton = document.getElementById("mobile-close-button") as any;
 
   // Abrir el sidebar
   mobileOpenButton.addEventListener("click", () => {
@@ -131,9 +131,12 @@ import expirience from "../assets/svg/Expirience.svg";
     }, 300); // Tiempo para que complete la transición
   });
 
-  // Cerrar el sidebar al hacer clic fuera de él
+  // Cerrar el sidebar al hacer clic fuera de él, solo en tamaños menores a 'sm'
   window.addEventListener("click", (event) => {
+    const isSmallScreen = window.innerWidth < 640; // Breakpoint 'sm' en Tailwind
+
     if (
+      isSmallScreen && // Solo ejecuta el cierre en pantallas pequeñas
       !mobileSidebar.contains(event.target) &&
       !mobileOpenButton.contains(event.target)
     ) {
