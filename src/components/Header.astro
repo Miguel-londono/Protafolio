@@ -1,39 +1,11 @@
 ---
 import maleta from "../assets/img/maleta.png";
 import cv from "../assets/svg/CV.svg";
+import ButtonToggle from "./ButtonToggle.astro";
 ---
 <header id="header" class="sticky top-0 z-10 dark:bg-gray-950 bg-gray-300 sm:ml-64 dark:text-slate-50 ">
     <div class="p-4 absolute left-0">
-        <button
-          id="themeToggle"
-          class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-300 dark:bg-gray-700 shadow-md hover:shadow-lg transition-all duration-300"
-        >
-          <svg
-            id="sunIcon"
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 text-yellow-500 dark:hidden"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.364-7.364l-1.414 1.414M6.343 17.657l-1.414-1.414m12.728 0l-1.414 1.414M6.343 6.343L4.93 4.93M12 8a4 4 0 100 8 4 4 0 000-8z"
-            ></path>
-          </svg>
-          <svg
-            id="moonIcon"
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 text-blue-500 hidden dark:block"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path
-              d="M17.293 13.293a8 8 0 11-10.586-10.586A7 7 0 1017.293 13.293z"
-            ></path>
-          </svg>
+        <ButtonToggle/>
     </div>
     <section class="fade-in max-w-5xl mx-auto">
       <div class="p-4 absolute right-0">
@@ -79,3 +51,49 @@ import cv from "../assets/svg/CV.svg";
       </div>
     </section>
   </header>
+  
+  <script>
+    const header = document.getElementById("header");
+    const heyThere = header.querySelector("p");
+    const description = header.querySelector("h2");
+    const image = header.querySelector("img[alt='maleta']");
+  
+    window.addEventListener("scroll", () => {
+      const scrollY = window.scrollY; // Obtiene la posición del scroll
+      const maxScroll = 150; // Altura máxima antes de ocultar completamente
+  
+      // Calcula el porcentaje basado en el desplazamiento
+      const opacity = Math.max(0, 1 - scrollY / maxScroll); // Opacidad de los elementos
+      const height = Math.max(70, 200 - scrollY); // Ajusta el alto del header (mínimo 70px)
+  
+      // Ajusta el alto del header
+      header.style.height = `${height}px`;
+      header.style.overflow = "hidden";
+      header.style.transition = "height 0.3s ease";
+  
+      // Oculta gradualmente los elementos internos
+      heyThere.style.opacity = opacity;
+      heyThere.style.transform = `translateY(${scrollY / 5}px)`; // Desplaza ligeramente
+      heyThere.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+  
+      description.style.opacity = opacity;
+      description.style.transform = `translateY(${scrollY / 5}px)`;
+      description.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+  
+      image.style.opacity = opacity;
+      image.style.transform = `translateY(${scrollY / 5}px)`;
+      image.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+  
+      // Si el scroll es mayor al máximo, oculta completamente los elementos internos
+      if (scrollY >= maxScroll) {
+        heyThere.style.display = "none";
+        description.style.display = "none";
+        image.style.display = "none";
+      } else {
+        heyThere.style.display = "block";
+        description.style.display = "block";
+        image.style.display = "block";
+      }
+    });
+  </script>
+  
