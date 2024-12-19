@@ -3,16 +3,17 @@ import maleta from "../assets/img/maleta.png";
 import cv from "../assets/svg/CV.svg";
 import ButtonToggle from "./ButtonToggle.astro";
 ---
-<header id="header" class="sticky top-0 z-10 dark:bg-gray-950 bg-gray-300 sm:ml-64 dark:text-slate-50 ">
-    <div class="p-4 absolute left-0">
-        <ButtonToggle/>
+<header id="header" class="sticky top-0 z-10 dark:bg-gray-950 bg-gray-300 sm:ml-64 dark:text-slate-50">
+    <div class="p-4 absolute left-0 z-20"> <!-- Asegura que ButtonToggle esté sobre otros elementos -->
+      <ButtonToggle />
     </div>
-    <section class="fade-in max-w-5xl mx-auto">
-      <div class="p-4 absolute right-0">
+    <section class="fade-in max-w-5xl sm:mx-auto px-16 sm:px-0">
+      <div class="p-4 absolute right-0 z-20"> <!-- Ajuste de z-index para el botón del menú móvil -->
         <button
           id="mobile-open-button"
           class="text-3xl sm:hidden focus:outline-none"
-          >&#9776
+        >
+          &#9776;
         </button>
       </div>
       <div
@@ -20,13 +21,13 @@ import ButtonToggle from "./ButtonToggle.astro";
       >
         <div>
           <p>Hey there 👋</p>
-          <div class="flex flex-row gap-2 sm:gap-3 sm:items-center">
+          <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 sm:items-center">
             <h1 class="text-xl sm:text-3xl font-bold flex-grow">
-              Hey, Soy Miguel londoño
+              Hey, Soy Miguel Londoño
             </h1>
             <a
               href="CV-Miguel-Londoño.pdf"
-              type="downland"
+              type="download"
               target="_blank"
               class="px-3 flex items-center p-1 gap-3 transition ease-in-out hover:scale-[101%] hover:opacity-80 cursor-pointer bg-slate-600 rounded-lg"
             >
@@ -39,8 +40,8 @@ import ButtonToggle from "./ButtonToggle.astro";
             </a>
           </div>
           <h2 class="text-sm sm:text-base">
-            Desarrollador Web full stack en formacion, Especialociado en crear
-            aplicaciones y soluciones unicas.
+            Desarrollador Web full stack en formación, Especializado en crear
+            aplicaciones y soluciones únicas.
           </h2>
         </div>
         <img
@@ -52,24 +53,32 @@ import ButtonToggle from "./ButtonToggle.astro";
     </section>
   </header>
   
+
   <script>
-    const header = document.getElementById("header");
+    const header = document.getElementById("header") as any;
     const heyThere = header.querySelector("p");
     const description = header.querySelector("h2");
     const image = header.querySelector("img[alt='maleta']");
   
     window.addEventListener("scroll", () => {
       const scrollY = window.scrollY; // Obtiene la posición del scroll
-      const maxScroll = 150; // Altura máxima antes de ocultar completamente
+      const maxScroll = 50; // Altura máxima antes de ocultar completamente
   
-      // Calcula el porcentaje basado en el desplazamiento
-      const opacity = Math.max(0, 1 - scrollY / maxScroll); // Opacidad de los elementos
-      const height = Math.max(70, 200 - scrollY); // Ajusta el alto del header (mínimo 70px)
+      // Detectar el tamaño de la pantalla
+      const isSmallScreen = window.innerWidth < 640; // 'sm' breakpoint en Tailwind es 640px
+  
+      // Ajusta el alto del header según el tamaño de pantalla
+      const height = isSmallScreen
+        ? Math.max(90, 300 - scrollY) // Para pantallas menores a 'sm'
+        : Math.max(70, 185 - scrollY); // Para pantallas 'sm' y mayores
   
       // Ajusta el alto del header
       header.style.height = `${height}px`;
       header.style.overflow = "hidden";
       header.style.transition = "height 0.3s ease";
+  
+      // Calcula el porcentaje basado en el desplazamiento
+      const opacity = Math.max(0, 1 - scrollY / maxScroll); // Opacidad de los elementos
   
       // Oculta gradualmente los elementos internos
       heyThere.style.opacity = opacity;
