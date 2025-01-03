@@ -1,8 +1,5 @@
 ---
-
 import "../styles/global.css";
-import { ClientRouter } from "astro:transitions";
-
 import SideBar from "../components/SideBar.astro";
 import Header from "../components/Header.astro";
 ---
@@ -15,21 +12,21 @@ import Header from "../components/Header.astro";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>Protafolio | Miguel Londoño</title>
-    <ClientRouter />
   </head>
-  <body class=" ">
-    <Header/>
+  <body class="bg-gray-100 dark:bg-gray-900">
+    <Header />
     <SideBar />
-    <main class="sm:ml-64 bg-gray-100 text-black dark:bg-gray-900 dark:text-slate-50">
+    <main
+      class="sm:ml-64 bg-gray-100 text-black dark:bg-gray-900 dark:text-slate-50"
+    >
       <slot />
     </main>
   </body>
 </html>
-
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const themeToggle = document.getElementById("themeToggle") as any;
-    const body = document.body;
+    const themeToggle = document.getElementById("themeToggle") as HTMLElement;
+    const html = document.documentElement; // Cambiar a html
 
     // Cargar el tema inicial
     if (
@@ -37,14 +34,14 @@ import Header from "../components/Header.astro";
       (!("theme" in localStorage) &&
         window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
-      body.classList.add("dark");
+      html.classList.add("dark"); // Agregar clase al html
     } else {
-      body.classList.remove("dark");
+      html.classList.remove("dark"); // Quitar clase del html
     }
 
     // Cambiar el tema al hacer clic
     themeToggle.addEventListener("click", () => {
-      const isDarkMode = body.classList.toggle("dark");
+      const isDarkMode = html.classList.toggle("dark"); // Cambiar clase en html
       localStorage.theme = isDarkMode ? "dark" : "light";
     });
 
