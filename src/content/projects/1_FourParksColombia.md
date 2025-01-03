@@ -7,10 +7,10 @@ description:
   administrar centralizadamente las operaciones, optimizar procesos y facilitar la experiencia del usuario mediante
   módulos como estadísticas, parametrización, reportes y reserva de cupos.
 image:
-  url: "/public/proyectos/four-parks/FourParks-Landing.jpg"
+  url: "../../public/proyectos/four-parks/FourParks-Landing.jpg"
   alt: Logo o imagen representativa del proyecto Four-Parks Colombia
 tecnologias: [
-    {name: React, img: "../../public/proyectos/four-parks/FourParks-Landing.jpg"},
+    {name: React, img: "/src/assets/svg/tecs/React.svg"},
     {name: JavaScript, img: "/src/assets/svg/tecs/JavaS.svg"}
 ]
 ---
