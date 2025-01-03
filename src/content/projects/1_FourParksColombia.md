@@ -10,8 +10,8 @@ image:
   url: "/proyectos/four-parks/FourParks-Landing.jpg"
   alt: Logo o imagen representativa del proyecto Four-Parks Colombia
 tecnologias: [
-    {name: React, img: "/assets/svg/tecs/React.svg"},
-    {name: JavaScript, img: "/assets/svg/tecs/React.svg"}
+    {name: React, img: "/src/assets/svg/tecs/React.svg"},
+    {name: JavaScript, img: "/src/assets/svg/tecs/React.svg"}
 ]
 ---
 
