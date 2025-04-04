@@ -1,5 +1,5 @@
 ---
-title: Four Parks Colombia
+title: Login NODE Express
 authors: [Miguel Londoño]
 date: 08/08/2024
 description: >
@@ -14,4 +14,5 @@ image:
 tecnologias: 
   - {name: JavaScript, img: "/src/assets/svg/tecs/JavaS.svg"}
   - {name: Node, img: "/src/assets/svg/tecs/node.svg"}
+deploy: "https://github.com/Miguel-londono/Login-node"
 ---

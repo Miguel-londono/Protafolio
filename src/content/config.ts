@@ -16,6 +16,7 @@ const projectsSchema = z.object({
       img: z.string().optional(), // Imagen opcional de la tecnología
     })
   ),
+  deploy: z.string(),
 });
 
 // Actualización para el esquema de experiencias

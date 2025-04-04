@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { data, slug } = project;
-const { title, authors, date, description, image, tecnologias } = data;
+const { title, authors, date, description, image, tecnologias, deploy } = data;
 
 ---
 
@@ -29,7 +29,7 @@ const { title, authors, date, description, image, tecnologias } = data;
         {title}{" </>"}
       </h1>
       <a
-        href="https://github.com/Miguel-londono/App-Peliculas.git"
+        href={deploy}
         class="flex items-center justify-center px-3 gap-3 transition ease-in-out hover:scale-[102%] opacity-80 cursor-pointer bg-slate-600 rounded-lg text-center"
       >
         {`Deploy`}
@@ -64,7 +64,7 @@ const { title, authors, date, description, image, tecnologias } = data;
       </div>
     </div>
 
-    <!-- Tecnologías -->
+    <!-- Tecnologías
     <div>
       <h2 class="text-3xl font-bold mb-2 gap-3">Tecnologias{" </>"}</h2>
       <ul class="flex gap-3 py-6">
@@ -75,7 +75,7 @@ const { title, authors, date, description, image, tecnologias } = data;
               alt={tec.name}
               class="w-8 h-8 sm:w-12 sm:h-12 dark:invert transition ease-in-out hover:scale-[104%] hover:opacity-70 cursor-pointer"
             />
-            <!-- Tooltip personalizado -->
+            Tooltip personalizado
             <span
               class="absolute bottom-full mb-2 hidden group-hover:inline-block bg-gray-700 text-white text-xs rounded py-1 px-2 whitespace-nowrap"
             >
@@ -84,7 +84,7 @@ const { title, authors, date, description, image, tecnologias } = data;
           </li>
         ))}
       </ul>
-    </div>
+    </div> -->
   </section>
 </Layout>
 
