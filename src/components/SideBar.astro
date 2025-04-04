@@ -27,13 +27,17 @@ import expirience from "../assets/svg/Expirience.svg";
       </a>
       <div>
         <ul>
-          <li
-            id="btnInicio"
-            class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
-          >
-            <img src={home.src} alt="Home" class="w-6 h-6 dark:invert" />
-            Inicio
-          </li>
+          <a href="/">
+
+            <li
+              id="btnInicio"
+              class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
+            >
+              <img src={home.src} alt="Home" class="w-6 h-6 dark:invert" />
+              Inicio
+            </li>
+
+          </a>
           <li
             id="btnExperience"
             class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
@@ -56,27 +60,20 @@ import expirience from "../assets/svg/Expirience.svg";
             />
             Sobre Mi
           </li>
-          <li
-            id="btnCertificates"
-            class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
-          >
-            <img
-              src={projects.src}
-              alt="Certificates"
-              class="w-6 h-6 dark:invert"
-            />
-            Certificados
-          </li>
-          <li
-            class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
-          >
-            <img
-              src={projects.src}
-              alt="Projects"
-              class="w-6 h-6 dark:invert"
-            />
-            Proyectos
-          </li>
+          <a href="/projects">
+
+            <li
+              class="flex items-center p-3 gap-3 transition ease-in-out hover:scale-[104%] hover:opacity-80 cursor-pointer hover:bg-slate-600 rounded-lg min-w-44"
+            >
+              <img
+                src={projects.src}
+                alt="Projects"
+                class="w-6 h-6 dark:invert"
+              />
+              Proyectos
+            </li>
+
+          </a>
         </ul>
       </div>
     </div>

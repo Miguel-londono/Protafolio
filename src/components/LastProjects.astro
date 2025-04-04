@@ -1,28 +1,30 @@
 ---
-
 import { getCollection } from "astro:content";
 import WindowProject from "./WindowProject.astro";
 import About from "./About.astro";
 import projectsSvg from "../assets/svg/Projects.svg";
 import Experience from "./Experience.astro";
+import CardProyects from "./CardProyects.astro";
 
-const projects = await getCollection("projects"); // Asegúrate de usar el mismo nombre definido en el esquema
+const projects = await getCollection("projects");
 ---
 
 <!-- Window Projects-->
 <section
   id="hero"
-  class="fade-in scrollbar-hide  max-w-5xl mx-auto flex flex-col p-4 gap-6 dark:text-slate-50"
+  class="fade-in scrollbar-hide max-w-5xl mx-auto flex flex-col p-4 gap-6 dark:text-slate-50 mt-6"
 >
-  <h1 class="text-3xl w-fit font-bold mb-2 border-b-4 border-b-[#a49881] pb-3">
-    My last projects {"</>"}
+  <h1 class="text-3xl text-center font-bold mb-2 border-b-4 border-b-[#a49881] pb-3">
+    Mis Proyectos 💻
   </h1>
-  {
-    projects.slice(0, 3).map((project) => {
+  
+  <!-- Contenedor grid para las cartas con altura fija -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
+    {projects.slice(0, 3).map((project) => {
       const { data, slug } = project;
-      return <WindowProject key={slug} {...data} />;
-    })
-  }
+      return <CardProyects key={slug} {...data} class="h-full" />;
+    })}
+  </div>
 
   <a
     href="/projects"
@@ -32,6 +34,7 @@ const projects = await getCollection("projects"); // Asegúrate de usar el mismo
     <h1 class="text-center">Ir a mis proyectos</h1>
   </a>
 </section>
+
 
 <section
   id="experience"
@@ -45,16 +48,4 @@ const projects = await getCollection("projects"); // Asegúrate de usar el mismo
   class="fade-in max-w-5xl mx-auto flex py-6"
 >
   <About />
-</section>
-
-
-<!-- Cuarta sección -->
-<section
-  id="certificates"
-  class="fade-in max-w-5xl mx-auto flex items-center justify-center"
->
-  <div>
-    <h1 class="text-4xl font-bold">Certificados</h1>
-    <p class="text-lg">Contenido adicional</p>
-  </div>
 </section>
