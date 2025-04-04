@@ -71,7 +71,7 @@ const { title, authors, date, description, image, tecnologias } = data;
         {tecnologias.map((tec: any) => (
           <li class="relative group">
             <img
-              src={tec.img}
+              src={tec.img.src}
               alt={tec.name}
               class="w-8 h-8 sm:w-12 sm:h-12 dark:invert transition ease-in-out hover:scale-[104%] hover:opacity-70 cursor-pointer"
             />

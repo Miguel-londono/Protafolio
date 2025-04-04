@@ -12,6 +12,6 @@ image:
   url: "/proyectos/Login/Login.jpg"
   alt: Logo o imagen representativa del proyecto Four-Parks Colombia
 tecnologias: 
-  - {name: JavaScript, img: "/assets/svg/tecs/JavaS.svg"}
-  - {name: Node, img: "/assets/svg/tecs/node.svg"}
+  - {name: JavaScript, img: "/src/assets/svg/tecs/JavaS.svg"}
+  - {name: Node, img: "/src/assets/svg/tecs/node.svg"}
 ---
